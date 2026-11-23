@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Java Programming Lab (24IT385) | Siddhartha Academy of Higher Education</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css?v=5" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar" id="sidebar" aria-label="Lab navigation">
+        <div class="sidebar-inner">
+          <div class="brand" title="Open Student Profile">
+            <div class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="48" height="48" rx="12" fill="#050706"/>
+                <rect x="0.5" y="0.5" width="47" height="47" rx="11.5" stroke="rgba(132, 204, 22, 0.3)" stroke-width="1"/>
+                <!-- Isometric JVM Compiler / Modular Enterprise Nodes (Lime Green) -->
+                <path d="M24 10L37 17.5V32.5L24 40L11 32.5V17.5L24 10Z" stroke="#84cc16" stroke-width="1.75" stroke-linejoin="round" fill="rgba(132, 204, 22, 0.16)"/>
+                <path d="M24 10V25L37 17.5" stroke="#a3e635" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M24 25L11 17.5" stroke="#a3e635" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M24 25V40" stroke="#84cc16" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- High-Energy Orange runtime core -->
+                <circle cx="24" cy="25" r="3.5" fill="#f97316"/>
+                <circle cx="24" cy="25" r="5.5" stroke="rgba(249, 115, 22, 0.55)" stroke-width="1"/>
+              </svg>
+            </div>
+            <div class="brand-text">
+              <h1>Adv Java Lab</h1>
+            </div>
+          </div>
+
+          <div class="nav-block">
+            <button
+              type="button"
+              class="week-btn"
+              id="introNavBtn"
+              data-section="introduction"
+              aria-current="false"
+            >
+              <span class="label">Course Notes</span>
+              <span class="meta">textbook</span>
+            </button>
+
+            <p class="nav-label nav-label-spaced" id="navLabel">Laboratory Records</p>
+            <nav class="week-nav" id="weekNav" aria-labelledby="navLabel"></nav>
+          </div>
+
+          <div class="sidebar-foot">
+            <p class="foot-title">Advanced Java Programming Lab (24IT385)</p>
+            <p class="foot-inst">Department of Information Technology</p>
+            <p class="foot-inst">Siddhartha Academy of Higher Education</p>
+          </div>
+        </div>
+      </aside>
+
+      <div class="workspace">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button type="button" class="sidebar-toggle-btn" id="sidebarToggle" aria-label="Toggle navigation menu">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
+            <div class="topbar-copy">
+              <div class="topbar-breadcrumbs" aria-label="Breadcrumb">
+                <span class="breadcrumb-item">Siddhartha Academy</span>
+                <span class="breadcrumb-sep">/</span>
+                <span class="breadcrumb-item">Dept of IT</span>
+                <span class="breadcrumb-sep">/</span>
+                <span class="breadcrumb-item">24IT385</span>
+                <span class="breadcrumb-sep">/</span>
+                <span class="breadcrumb-item eyebrow" id="pageEyebrow">Academic Profile</span>
+              </div>
+              <h2 id="pageTitle">V Saravan</h2>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <a href="#home" class="student-chip" title="View Academic Profile">
+              <div class="student-chip-avatar">VS</div>
+              <div class="student-chip-info">
+                <span class="student-chip-name">V Saravan</span>
+                <span class="student-chip-roll">24EU08198</span>
+              </div>
+            </a>
+          </div>
+        </header>
+
+        <main class="content" id="weekPanel" aria-live="polite">
+          <div class="empty-state">
+            <div class="empty-glyph" aria-hidden="true"></div>
+            <h3>Choose a section from the sidebar</h3>
+            <p>
+              Open Course Notes for curriculum reference, or select a week to view comprehensive laboratory records.
+            </p>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Document Viewer Modal -->
+    <div class="viewer-overlay" id="viewerOverlay" hidden>
+      <div class="viewer" role="dialog" aria-modal="true" aria-labelledby="viewerTitle">
+        <div class="viewer-bar">
+          <h3 id="viewerTitle">Document</h3>
+          <button type="button" class="btn btn-ghost" id="closeViewer" aria-label="Close viewer">
+            Close
+          </button>
+        </div>
+        <iframe id="viewerFrame" title="Document preview"></iframe>
+      </div>
+    </div>
+
+    <!-- Lightbox Modal for Output Screenshots -->
+    <div class="lightbox-overlay" id="lightboxOverlay" hidden>
+      <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightboxCaption">
+        <button type="button" class="lightbox-close" id="closeLightbox" aria-label="Close image">×</button>
+        <img id="lightboxImage" src="" alt="Enlarged laboratory output screenshot" />
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+      </div>
+    </div>
+
+    <script src="js/records.js?v=5"></script>
+    <script src="js/notes.js?v=5"></script>
+    <script src="js/app.js?v=5"></script>
+  </body>
+</html>
